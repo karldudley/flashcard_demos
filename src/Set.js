@@ -7,7 +7,7 @@ function Set() {
 
    // new line start
   const [flashcards, setFlashcards] = useState(null)
-  const [sets, setSets] =useState(null)
+  const [cardsets, setCardsets] =useState(null)
 
   const setEl = useRef()
 
@@ -15,7 +15,7 @@ function Set() {
     axios
     .get('/sets')
     .then(res => {
-      setSets(res.data)
+      setCardsets(res.data)
     })
   }, [])
 
@@ -43,8 +43,8 @@ function Set() {
       <div className="form-group">
         <label htmlFor="set">Set</label>
         <select ref={setEl} id="set">
-          {sets ? sets.map(set => {
-            return <option value={set.id} key={set.id}>{set.set_name}</option>
+          {sets ? cardsets.map(cardset => {
+            return <option value={cardset.id} key={cardset.id}>{cardset.set_name}</option>
           }) : <option> Loading </option>}
         </select>
       </div>
