@@ -13,7 +13,7 @@ function Set() {
 
   useEffect(() => {
     axios
-    .get('/sets')
+    .get('https://my-study-club.herokuapp.com/sets')
     .then(res => {
       setCardsets(res.data)
     })
@@ -23,7 +23,7 @@ function Set() {
     e.preventDefault()
     axios({
       method: "GET",
-      url:`/flashcards/${setEl.current.value}`,
+      url:`https://my-study-club.herokuapp.com/flashcards/${setEl.current.value}`,
     })
     .then((response) => {
       const res = response.data
@@ -43,7 +43,7 @@ function Set() {
       <div className="form-group">
         <label htmlFor="set">Set</label>
         <select ref={setEl} id="set">
-          {sets ? cardsets.map(cardset => {
+          {cardsets ? cardsets.map(cardset => {
             return <option value={cardset.id} key={cardset.id}>{cardset.set_name}</option>
           }) : <option> Loading </option>}
         </select>
