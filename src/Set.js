@@ -7,7 +7,7 @@ function Set() {
 
    // new line start
   const [flashcards, setFlashcards] = useState(null)
-  const [sets, setSets] =useState([])
+  const [sets, setSets] =useState(null)
 
   const setEl = useRef()
 
@@ -43,9 +43,9 @@ function Set() {
       <div className="form-group">
         <label htmlFor="set">Set</label>
         <select ref={setEl} id="set">
-          {sets.map(set => {
+          {sets ? sets.map(set => {
             return <option value={set.id} key={set.id}>{set.set_name}</option>
-          })}
+          }) : <option> Loading </option>}
         </select>
       </div>
       <div className="form-group">
